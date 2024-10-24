@@ -23,12 +23,11 @@ from src.state import AgentState
 from src.agents import Agent
 from src.llm import LLM
 
+# Get the origins from the environment variable (default is regular localhost)
+origins = os.getenv("ORIGINS", "https://localhost:3000,http://localhost:3000").split(",")
+
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins":
-                             [
-                                "https://localhost:3000",
-                                "http://localhost:3000",
-                            ]}}) 
+CORS(app, resources={r"/*": {"origins": origins}}) 
 app.register_blueprint(project_bp)
 socketio.init_app(app)
 

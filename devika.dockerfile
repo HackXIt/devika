@@ -32,6 +32,8 @@ RUN chown -R nonroot:nonroot /home/nonroot/devika
 
 USER nonroot
 WORKDIR /home/nonroot/devika
+ARG ORIGINS
+ENV ORIGINS=${ORIGINS}
 ENV PATH="/home/nonroot/devika/.venv/bin:$HOME/.cargo/bin:$PATH"
 RUN mkdir /home/nonroot/devika/db
 
